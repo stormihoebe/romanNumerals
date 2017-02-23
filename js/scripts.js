@@ -14,17 +14,20 @@ var processing = function (number, indexOfBreak) {
   //wahts the remainder?
   var numberRemainder=(number%breaknumbers[indexOfBreak-1]);
   console.log(numberRemainder);
-  if (howManyRoman === 4) {
-    //if howManyRoman is 4, don't push any current romans, add previous roman, add next roman.
-    // if array greater than 1, pop off end. then push.
-    // if (outputArray.length > 0){
-    //   outputArray.pop();
-    // }
-    console.log("how many roman is 4, outputArray:" + outputArray);
+//this takes care of the 9 situation
 
+  if (numberRemainder === 4) {
+
+    console.log("number remainder is 4, outputArray:" + outputArray);
+    outputArray.pop();
+    outputArray.push(romans[indexOfBreak-2]);
+    outputArray.push(romans[indexOfBreak]);
+    return;
+  } //this takes care of the 4 IIII situation
+  else if (howManyRoman === 4) {
+    console.log("how many roman is 4, outputArray:" + outputArray);
     outputArray.push(largestRoman);
     outputArray.push(romans[indexOfBreak]);
-
 
   } else {
     console.log("how many roman is NOT 4, outputArray:"+outputArray);
@@ -32,7 +35,7 @@ var processing = function (number, indexOfBreak) {
       outputArray.push(romans[indexOfBreak-1]);
     };
   };
-
+//  this is the end of 4 IIII
   if (numberRemainder === 0) {
     return;
   } else {
@@ -40,7 +43,10 @@ var processing = function (number, indexOfBreak) {
   };
 };
 
+
+
 var numeralizeI = function(number) {
+  // debugger;
   for (var i=0;i<breaknumbers.length;i++) {
     if (number === breaknumbers[i]) {
       outputArray.push(romans[i]);
