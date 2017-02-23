@@ -1,3 +1,4 @@
+
 var romans = ["I", "V", "X", "L", "C", "D","M"];
 var breaknumbers = [1, 5, 10, 50, 100, 500, 1000];
 
@@ -10,17 +11,26 @@ var numeralizeI = function(number) {
       var largestRoman = romans[i-1];
       console.log(largestRoman);
       //how many breaknumbers was in our number?
-      var howManyRoman = number/breaknumbers[i-1];
+      var howManyRoman = Math.floor(number/breaknumbers[i-1]);
       console.log(howManyRoman);
 
       //wahts the remainder?
-      var numberRemainder=number%breaknumbers[i-1];
+      var numberRemainder=(number%breaknumbers[i-1]);
       console.log(numberRemainder);
 
       return;
+    } else if (number > 1000) {
+      var largestRoman = romans[6];
+      console.log(largestRoman);
+      //how many breaknumbers was in our number?
+      var howManyRoman = Math.floor(number/1000);
+      console.log(howManyRoman);
 
+      //wahts the remainder?
+      var numberRemainder=(number%1000);
+      console.log(numberRemainder);
 
-     }
+    }
       else {
       }
     }
