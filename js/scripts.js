@@ -1,6 +1,6 @@
 
-var romans = ["I", "V", "X", "L", "C", "D","M"];
-var breaknumbers = [1, 5, 10, 50, 100, 500, 1000];
+var romans = ["o","I", "V", "X", "L", "C", "D","M"];
+var breaknumbers = [0, 1, 5, 10, 50, 100, 500, 1000];
 var outputArray = [];
 var outputString = "";
 
@@ -11,12 +11,18 @@ var processing = function (number, indexOfBreak) {
   //how many breaknumbers was in our number?
   var howManyRoman = Math.floor(number/breaknumbers[indexOfBreak-1]);
   console.log(howManyRoman);
-  for (var j = 1; j <= howManyRoman; j++) {
-    outputArray.push(romans[indexOfBreak-1]);
-  };
   //wahts the remainder?
   var numberRemainder=(number%breaknumbers[indexOfBreak-1]);
   console.log(numberRemainder);
+  if (howManyRoman === 4) {
+    //if howManyRoman is 4, don't push any current romans, add previous roman, add next roman.
+    alert("You are 4!");
+  } else {
+    for (var j = 1; j <= howManyRoman; j++) {
+      outputArray.push(romans[indexOfBreak-1]);
+    };
+  };
+
   if (numberRemainder === 0) {
     return;
   } else {
@@ -33,7 +39,7 @@ var numeralizeI = function(number) {
       processing (number, i);
       return;
     } else if (number > 1000) {
-      processing (number, 7);
+      processing (number, 8);
       return;
     }
       else {
