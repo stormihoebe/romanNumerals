@@ -14,11 +14,14 @@ var processing = function (number, indexOfBreak) {
   for (var j = 1; j <= howManyRoman; j++) {
     outputArray.push(romans[indexOfBreak-1]);
   };
-
-
   //wahts the remainder?
   var numberRemainder=(number%breaknumbers[indexOfBreak-1]);
   console.log(numberRemainder);
+  if (numberRemainder === 0) {
+    return;
+  } else {
+    numeralizeI(numberRemainder);
+  };
 };
 
 var numeralizeI = function(number) {
