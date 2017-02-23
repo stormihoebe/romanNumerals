@@ -16,7 +16,12 @@ var processing = function (number, indexOfBreak) {
   console.log(numberRemainder);
   if (howManyRoman === 4) {
     //if howManyRoman is 4, don't push any current romans, add previous roman, add next roman.
-    alert("You are 4!");
+    // if array greater than 1, pop off end. then push.
+    // if (outputArray.length > 0){
+    //   outputArray.pop();
+    // }
+    outputArray.push(largestRoman);
+    outputArray.push(romans[indexOfBreak]);
   } else {
     for (var j = 1; j <= howManyRoman; j++) {
       outputArray.push(romans[indexOfBreak-1]);
