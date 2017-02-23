@@ -23,7 +23,8 @@ var numeralizeI = function(number) {
       processing (number, i);
       return;
     } else if (number > 1000) {
-      processing (number, 7);      
+      processing (number, 7);
+      return;     
     }
       else {
       }
