@@ -1,41 +1,46 @@
-var vowels = ["a","i","e","o","u","A","E","I","O","U"];
-var findVowel = function(word){
-  var lettersArray = word.split("");
-  var k = 0;
-  for (var i = 0; i < lettersArray.length; i++) {
-    for (var j = 0; j < vowels.length; j++) {
-      if ((lettersArray[i] === vowels[j]) && (k === 0)) {
-        k++;
-        return i;
-      };
+var romans = ["I", "V", "X", "L", "C", "D","M"];
+var breaknumbers = [1, 5, 10, 50, 100, 500, 1000];
+
+var numeralizeI = function(number) {
+  for (var i=0;i<breaknumbers.length;i++) {
+    if (number === breaknumbers[i]) {
+      return romans[i];
+    } else if (number < breaknumbers[i]) {
+      // found largest break point
+      var largestRoman = romans[i-1];
+      console.log(largestRoman);
+      //how many breaknumbers was in our number?
+      var howManyRoman = number/breaknumbers[i-1];
+      console.log(howManyRoman);
+
+      //wahts the remainder?
+      var numberRemainder=number%breaknumbers[i-1];
+      console.log(numberRemainder);
+
+      return;
+
+
+     }
+      else {
+      }
     }
-  }
-}; //end findVowel.
-var pigLatin = function(word) {
-  var index = findVowel(word);
-  var lettersArray = word.split("");
-  var newArray =[];
-  for (i =0; i < index ; i++) {
-    newArray.push(lettersArray[i]);
-  }
-  for (i =0; i < index ; i++) {
-    lettersArray.shift();
-  }
-  var output = lettersArray.concat(newArray).join("") + "ay";
-  return output;
-};//end pigLatin function
+
+};
+
 
 
 $(function(){
-  $(".pigForm").submit(function(){
+  $("#romanNumber").submit(function(){
     event.preventDefault();
-    var sentence = $("input#sentence").val();
-    var words = sentence.split(" ");
     var output = "";
-    words.forEach(function(word){
-      output += pigLatin(word) + " ";
-    });
-    $(".output").text(output);
+    var number = parseInt($("input#number").val());
+
+
+    output = numeralizeI(number);
     console.log(output);
+
+
+    // $(".output").text(output);
+    // console.log(output);
   });//submit
 });//jQuery
