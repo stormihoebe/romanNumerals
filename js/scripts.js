@@ -1,6 +1,6 @@
 
-var romans = ["o","I", "V", "X", "L", "C", "D","M"];
-var breaknumbers = [0, 1, 5, 10, 50, 100, 500, 1000];
+var romans = ["I", "V", "X", "L", "C", "D","M"];
+var breaknumbers = [1, 5, 10, 50, 100, 500, 1000];
 var outputArray = [];
 var outputString = "";
 
@@ -20,9 +20,14 @@ var processing = function (number, indexOfBreak) {
     // if (outputArray.length > 0){
     //   outputArray.pop();
     // }
+    console.log("how many roman is 4, outputArray:" + outputArray);
+
     outputArray.push(largestRoman);
     outputArray.push(romans[indexOfBreak]);
+
+
   } else {
+    console.log("how many roman is NOT 4, outputArray:"+outputArray);
     for (var j = 1; j <= howManyRoman; j++) {
       outputArray.push(romans[indexOfBreak-1]);
     };
@@ -44,7 +49,7 @@ var numeralizeI = function(number) {
       processing (number, i);
       return;
     } else if (number > 1000) {
-      processing (number, 8);
+      processing (number, 7);
       return;
     }
       else {
