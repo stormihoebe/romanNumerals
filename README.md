@@ -9,12 +9,12 @@
 
 This is an application that takes in a sentence and returns a pig latin translation of that sentence.
 Specs:
-***The application should do noting to non-alphabetical characters***
-***The application should add "ay" to single-letter words beginning with a vowel***
-***the application should move consonants at the beginning of the word to the end of the word and then add "ay"
-to the end***
-***The application should move "qu" together when they appear at the beginning of a word***
-***The application should return the full sentence completely translated into pig latin***
+The application should do noting to non-alphabetical characters
+The application should add "ay" to single-letter words beginning with a vowel
+the application should move consonants at the beginning of the word to the end of the word and then add "ay"
+to the end
+The application should move "qu" together when they appear at the beginning of a word
+The application should return the full sentence completely translated into pig latin
 ## Setup/Installation Requirements
 Open the terminal and preform the following:
 ```
