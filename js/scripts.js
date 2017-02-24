@@ -2,6 +2,10 @@
 var romans = ["I", "V", "X", "L", "C", "D","M"];
 var breaknumbers = [1, 5, 10, 50, 100, 500, 1000];
 var outputArray = [];
+var ones=[];
+var tens=[];
+var hundreds=[];
+var thousands=[];
 var outputString = "";
 
 var processing = function (number, indexOfBreak) {
@@ -13,18 +17,20 @@ var processing = function (number, indexOfBreak) {
   console.log(howManyRoman);
   //wahts the remainder?
   var numberRemainder=(number%breaknumbers[indexOfBreak-1]);
+
+
   console.log(numberRemainder);
-//this takes care of the 9 situation
+// if number < 10 and reaminder greater than 4, then 9. do for all three p;ositons.
+  // ok...we know it is "9", bevcause largest roman is 5, and symbol is IX.
+  // We know it is "90" because largest roman is 50, and symbol is xc.
+  // we know it is 900 because largerest roman is 500, and symbol is cm.
+  //
+  // why don't we just hard code these three facts in here? Check if 9 and which Largest Roman? Then code it in.
+  //
+  // Well Stormi, I think we are at the right place in OutputArray when we get here.   var amINine = number - numberRemainder?????
 
-  if (numberRemainder === 4) {
 
-    console.log("number remainder is 4, outputArray:" + outputArray);
-    outputArray.pop();
-    outputArray.push(romans[indexOfBreak-2]);
-    outputArray.push(romans[indexOfBreak]);
-    return;
-  } //this takes care of the 4 IIII situation
-  else if (howManyRoman === 4) {
+  if (howManyRoman === 4) {
     console.log("how many roman is 4, outputArray:" + outputArray);
     outputArray.push(largestRoman);
     outputArray.push(romans[indexOfBreak]);
@@ -46,7 +52,6 @@ var processing = function (number, indexOfBreak) {
 
 
 var numeralizeI = function(number) {
-  // debugger;
   for (var i=0;i<breaknumbers.length;i++) {
     if (number === breaknumbers[i]) {
       outputArray.push(romans[i]);
