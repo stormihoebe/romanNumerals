@@ -8,6 +8,14 @@ var hundreds=[];
 var thousands=[];
 var outputString = "";
 
+var checkForRemainder = function (remainder) {
+  if (remainder === 0) {
+    return;
+  } else {
+    numeralizeI(remainder);
+  };
+}
+
 var processing = function (number, indexOfBreak) {
   // found largest break point
   var largestRoman = romans[indexOfBreak-1];
@@ -17,8 +25,6 @@ var processing = function (number, indexOfBreak) {
   console.log(howManyRoman);
   //wahts the remainder?
   var numberRemainder=(number%breaknumbers[indexOfBreak-1]);
-
-
   console.log(numberRemainder);
 // if number < 10 and reaminder greater than 4, then 9. do for all three p;ositons.
   // ok...we know it is "9", bevcause largest roman is 5, and symbol is IX.
@@ -29,37 +35,32 @@ var processing = function (number, indexOfBreak) {
   //
   // Well Stormi, I think we are at the right place in OutputArray when we get here.   var amINine = number - numberRemainder?????
 
-if (number <10 && numberRemainder > 3) {
+if (((number <10) && (numberRemainder > 3) || ((number < 100) && (numberRemainder > 39)) || (number <1000) && (numberRemainder > 399))){
   outputArray.push(romans[indexOfBreak-2]);
   outputArray.push(romans[indexOfBreak]);
-  return;
-} else if (number <100 && numberRemainder > 39) {
-  outputArray.push(romans[indexOfBreak-2]);
+  checkForRemainder (numberRemainder);
+//The problem here with nine: After nine passes through, the second time around, howManyRoman = 4 because there are 4 I's. So it performs the else if statement below. which we do NOT want it to.
+} else if ((howManyRoman === 4)) {
+  console.log("numberRemainder " + numberRemainder);
+  outputArray.push(largestRoman);
   outputArray.push(romans[indexOfBreak]);
-  return;
-}
-  else if (howManyRoman === 4) {
-    console.log("how many roman is 4, outputArray:" + outputArray);
-    outputArray.push(largestRoman);
-    outputArray.push(romans[indexOfBreak]);
+  checkForRemainder (numberRemainder);
+} else {
+  console.log("how many roman is NOT 4, outputArray:"+outputArray);
+  for (var j = 1; j <= howManyRoman; j++) {
+    outputArray.push(romans[indexOfBreak-1]);
+    checkForRemainder (numberRemainder);
 
-  } else {
-    console.log("how many roman is NOT 4, outputArray:"+outputArray);
-    for (var j = 1; j <= howManyRoman; j++) {
-      outputArray.push(romans[indexOfBreak-1]);
+
     };
   };
 //  this is the end of 4 IIII
-  if (numberRemainder === 0) {
-    return;
-  } else {
-    numeralizeI(numberRemainder);
-  };
 };
 
 
 
 var numeralizeI = function(number) {
+  // debugger;
   for (var i=0;i<breaknumbers.length;i++) {
     if (number === breaknumbers[i]) {
       outputArray.push(romans[i]);
