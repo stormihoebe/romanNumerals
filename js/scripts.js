@@ -29,8 +29,16 @@ var processing = function (number, indexOfBreak) {
   //
   // Well Stormi, I think we are at the right place in OutputArray when we get here.   var amINine = number - numberRemainder?????
 
-
-  if (howManyRoman === 4) {
+if (number <10 && numberRemainder > 3) {
+  outputArray.push(romans[indexOfBreak-2]);
+  outputArray.push(romans[indexOfBreak]);
+  return;
+} else if (number <100 && numberRemainder > 39) {
+  outputArray.push(romans[indexOfBreak-2]);
+  outputArray.push(romans[indexOfBreak]);
+  return;
+}
+  else if (howManyRoman === 4) {
     console.log("how many roman is 4, outputArray:" + outputArray);
     outputArray.push(largestRoman);
     outputArray.push(romans[indexOfBreak]);
